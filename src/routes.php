@@ -2,7 +2,8 @@
 
 use Slim\Http\Request;
 use Slim\Http\Response;
-use Slim\Http\UploadedFile;
+use Slim\Http\UploadedFile; // https://www.slimframework.com/docs/v3/cookbook/uploading-files.html
+include_once "./database.php";
 
 // Routes
 
