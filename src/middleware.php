@@ -2,6 +2,9 @@
 // Application middleware
 
 // e.g: $app->add(new \Slim\Csrf\Guard);
+use Slim\Http\Request;
+use Slim\Http\Response;
+use Slim\Http\UploadedFile;
 
 $app->add(function($request, $response, $next) {
     $route = $request->getAttribute("route");
