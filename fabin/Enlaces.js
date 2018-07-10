@@ -23,6 +23,7 @@ const UsersPOST = require ('./Usuario/post')
 App.get('/api/users/all', UsersGET.getallusers)
 App.get('/api/users/id/:DATO', UsersGET.getuser)
 App.post('/api/users/register/onlyuser', UsersPOST.registeruser)
+App.post('/api/users/register/client', UsersPOST.registerclientuser)
 
 App.all('/*', (req, res) => {
     console.log(`Rechaze Peticion invalida de ${req.url} a traves del metodo ${req.originalMethod}`)
