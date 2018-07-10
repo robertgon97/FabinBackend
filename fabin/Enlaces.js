@@ -17,11 +17,12 @@ App.use(function(req, res, next) { //Todas las respuestas tendran una cabecera
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Accept')
     next()
 })
-const sql = require ('./Middelware/sql')
 
-const Users = require ('./Usuario/index')
-App.get('/api/users/all', sql.startsql, Users.getallusers, sql.stopsql)
-App.get('/api/users/id/:DATO', sql.startsql, Users.getuser, sql.stopsql)
+const UsersGET = require ('./Usuario/get')
+const UsersPOST = require ('./Usuario/post')
+App.get('/api/users/all', UsersGET.getallusers)
+App.get('/api/users/id/:DATO', UsersGET.getuser)
+App.post('/api/users/register/onlyuser', UsersPOST.registeruser)
 
 App.all('/*', (req, res) => {
     console.log(`Rechaze Peticion invalida de ${req.url} a traves del metodo ${req.originalMethod}`)
