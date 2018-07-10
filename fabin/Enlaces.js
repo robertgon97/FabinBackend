@@ -21,6 +21,7 @@ const sql = require ('./Middelware/sql')
 
 const Users = require ('./Usuario/index')
 App.get('/api/users/all', sql.startsql, Users.getallusers, sql.stopsql)
+App.get('/api/users/id/:DATO', sql.startsql, Users.getuser, sql.stopsql)
 
 App.all('/*', (req, res) => {
     console.log(`Rechaze Peticion invalida de ${req.url} a traves del metodo ${req.originalMethod}`)

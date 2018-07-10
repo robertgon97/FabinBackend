@@ -19,6 +19,25 @@ function getallusers (req, res, next) {
     next()
   })
 }
+
+function getuser (req, res, next) {
+  req.sql.query(`SELECT * FROM usuarios WHERE id_usuario = ${req.params.DATO}`, (err, results) => {
+    if (err) {
+      req.StatusCode = 500
+      req.Data = {}
+      req.Message = err
+      req.Results = 0
+    } else {
+      req.StatusCode = 200
+      req.Data = results.pop()
+      req.Message = 'Resultados Obtenidos'
+      req.Results = results.length
+    }
+    next()
+  })
+}
+
 module.exports = {
-  getallusers
+  getallusers,
+  getuser
 }
